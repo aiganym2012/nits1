@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX Example</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#btn").click(function(){
+				$.ajax({
+					url: "fetch.php",
+					type: "POST",
+					dataType: "html",
+					data: {name: $("#name").val(), date: $("#date").val(), time: $("#time").val()},
+					success: function(result){
+						$("#result").html(result);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<h2>Fetch Data Using AJAX</h2>
+	<p>Enter Name:</p>
+	<input type="text" id="name">
+	<input type="date" id="date">
+	<input type="time" id="time">
+	<button id="btn">Fetch Data</button>
+	<div id="result"></div>
+</body>
+</html>
